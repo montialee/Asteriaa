@@ -3,18 +3,293 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Asteriaa</title>
+    <title>Asteria - Astrophotography Planning Reimagined</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         html, body {
             height: 100%;
-            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         }
 
         body {
             background: radial-gradient(circle at 50% 120%, #f9d751, #febc51, #fea256, #f88b5e, #ee7666, #e1636d, #d15473, #bf4878, #ab3e7a, #97377a, #813177, #6c2d72);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 80px 0 60px;
+            color: white;
+        }
+
+        .logo {
+            font-size: 4.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .tagline {
+            font-size: 1.8rem;
+            font-weight: 300;
+            margin-bottom: 30px;
+            opacity: 0.95;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 50px;
+            line-height: 1.7;
+            opacity: 0.9;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 18px 50px;
+            background: rgba(255, 255, 255, 0.95);
+            color: #6c2d72;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .cta-button:hover {
+            background: rgba(255, 255, 255, 1);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Features Section */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 60px 0;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 35px;
+            color: white;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.18);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-description {
+            font-size: 1rem;
+            line-height: 1.6;
+            opacity: 0.95;
+        }
+
+        /* Stats Section */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 15px;
+            padding: 30px 20px;
+            color: white;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Final CTA Section */
+        .final-cta {
+            text-align: center;
+            padding: 80px 0 60px;
+            color: white;
+        }
+
+        .final-cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            text-shadow: 0 3px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 3rem;
+            }
+
+            .tagline {
+                font-size: 1.4rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .final-cta h2 {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1 class="logo">Asteria</h1>
+            <p class="tagline">Your Indispensable Astrophotography Partner</p>
+            <p class="subtitle">
+                Transform complex sky planning into creative action. Intelligent recommendations,
+                AR horizon scanning, and precision framing—all in one powerful app.
+            </p>
+            <a href="#" class="cta-button">Get Early Access</a>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features">
+            <div class="feature-card">
+                <span class="feature-icon">🎯</span>
+                <h3 class="feature-title">Intelligent Target Engine</h3>
+                <p class="feature-description">
+                    Filter by altitude, angular size, object type, and moon separation.
+                    Our Framing Score algorithm ranks targets perfectly matched to your equipment.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">📱</span>
+                <h3 class="feature-title">AR Horizon Scanner</h3>
+                <p class="feature-description">
+                    Scan your physical horizon with your phone. Save custom profiles to see
+                    exactly when targets clear trees, buildings, and hills at your location.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">🔭</span>
+                <h3 class="feature-title">Precision Framing</h3>
+                <p class="feature-description">
+                    Input your camera sensor and telescope focal length. Get instant
+                    field-of-view calculations and composition recommendations.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">📍</span>
+                <h3 class="feature-title">Foreground Alignment</h3>
+                <p class="feature-description">
+                    Plan landscape astrophotography shots with surgical precision. Find exactly
+                    where to stand to align celestial objects with landmarks.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">🌙</span>
+                <h3 class="feature-title">Real-Time Calculations</h3>
+                <p class="feature-description">
+                    Powered by Astronomy Engine with sub-arcminute accuracy.
+                    All calculations run offline on your device—no signal required.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">🌌</span>
+                <h3 class="feature-title">Curated Sky Database</h3>
+                <p class="feature-description">
+                    Enriched SIMBAD data with angular sizes, visibility charts, and transit times.
+                    Astro-specific weather and light pollution maps included.
+                </p>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats">
+            <div class="stat-card">
+                <div class="stat-number">±1′</div>
+                <div class="stat-label">Position Accuracy</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Offline Capable</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">1000s</div>
+                <div class="stat-label">Celestial Objects</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">AR</div>
+                <div class="stat-label">Horizon Scanning</div>
+            </div>
+        </section>
+
+        <!-- Final CTA -->
+        <section class="final-cta">
+            <h2>Ready to Transform Your Night Sky Planning?</h2>
+            <a href="#" class="cta-button">Join the Waitlist</a>
+        </section>
+    </div>
 </body>
 </html>
